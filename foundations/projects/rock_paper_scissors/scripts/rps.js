@@ -80,7 +80,7 @@ function singleRound (playerSelection, computerSelection = computerPlay()) {
     return printWinner(playerWin, playerSelection, computerSelection)
 }
 
-function game(numOfRounds = 5) {
+/* function game(numOfRounds = 5) {
     let playerScore = 0;
     let computerScore = 0;
     let gameResult = null;
@@ -106,6 +106,14 @@ function game(numOfRounds = 5) {
         return "You lost the game.";
     }
 }
+*/
 
-console.log(game());
+// console.log(game());
+
+const gameButtons = document.querySelectorAll('button.game-buttons');
+gameButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button.innerText);
+    });
+});
 

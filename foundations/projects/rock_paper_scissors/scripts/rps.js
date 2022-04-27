@@ -80,6 +80,83 @@ function singleRound (playerSelection, computerSelection = computerPlay()) {
     return printWinner(playerWin, playerSelection, computerSelection)
 }
 
+function addDiv (sourceContainer, newDiv, textContent, classDesc = "addDiv") {
+    newDiv = document.createElement('div');
+    newDiv.textContent = textContent;
+    newDiv.classList.add(classDesc);
+    sourceContainer.appendChild(newDiv);
+}
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function main () {
+    let playerSelection = null;
+    let singleResult = null;
+    let singleGame = null;
+    let gameCount = 0;
+
+    const winningScore = 5;
+    let playerScore = 0;
+    let computerScore = 0;
+    let finalWinner = null;
+
+    const gameButtons = document.querySelectorAll('button.game-buttons');
+    const gameResults = document.querySelector('div.game-results');
+
+    gameButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (playerScore < 5 && computerScore < 5) {
+                gameCount++;
+                playerSelection = button.innerText;
+                singleGame = singleRound(playerSelection);
+    
+                addDiv(gameResults, singleResult, (`Game ${gameCount}: ` + singleGame), classDesc = "single-result");
+                if (singleGame.toLowerCase().includes("win")) {
+                    playerScore++;
+                }
+                else if (singleGame.toLowerCase().includes("lose")) {
+                    computerScore++;
+                }    
+            }
+
+            if (playerScore === 5 || computerScore === 5) {
+                gameButtons.forEach((button) =>  {
+                    button.disabled = true;
+                })
+                if (playerScore > computerScore) {
+                    finalWinner = "Congrats! You won the game!";
+                }
+                else if (computerScore > playerScore) {
+                    finalWinner = "You lost the game.";
+                }
+                addDiv(gameResults, singleResult, finalWinner, classDesc = "final-winner");
+                
+                let newButton = document.createElement('button');
+                newButton.textContent = "Play Again?";
+                newButton.classList.add('play-again-button');
+                gameResults.appendChild(newButton);
+
+                let playAgainButton = document.querySelector('button.play-again-button');
+                playAgainButton.addEventListener('click', () => {
+                    gameCount = 0;
+                    playerScore = 0;
+                    computerScore = 0;
+                    removeAllChildNodes(gameResults);    
+                    gameButtons.forEach((button) =>  {
+                        button.disabled = false;
+                    })
+                })
+            }
+        });
+    });    
+}
+
+main();
+
 /* function game(numOfRounds = 5) {
     let playerScore = 0;
     let computerScore = 0;
@@ -107,13 +184,3 @@ function singleRound (playerSelection, computerSelection = computerPlay()) {
     }
 }
 */
-
-// console.log(game());
-
-const gameButtons = document.querySelectorAll('button.game-buttons');
-gameButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        console.log(button.innerText);
-    });
-});
-

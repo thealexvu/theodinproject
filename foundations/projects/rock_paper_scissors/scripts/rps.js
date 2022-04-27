@@ -134,7 +134,9 @@ function main () {
                     finalWinner = "You lost the game.";
                 }
                 addDiv(gameResults, singleResult, finalWinner, classDesc = "final-winner");
-                
+                finalScore = `Player Score: ${playerScore}  Computer Score: ${computerScore}`;
+                addDiv(gameResults, singleResult, finalScore, classDesc = "final-winner");
+
                 let newButton = document.createElement('button');
                 newButton.textContent = "Play Again?";
                 newButton.classList.add('play-again-button');

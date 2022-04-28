@@ -80,11 +80,11 @@ function singleRound (playerSelection, computerSelection = computerPlay()) {
     return printWinner(playerWin, playerSelection, computerSelection)
 }
 
-function addDiv (sourceContainer, newDiv, textContent, classDesc = "addDiv") {
-    newDiv = document.createElement('div');
-    newDiv.textContent = textContent;
-    newDiv.classList.add(classDesc);
-    sourceContainer.appendChild(newDiv);
+function addElement (elementType = 'div', sourceContainer, newElement, textContent, classDesc = "newElement") {
+    newElement = document.createElement(elementType);
+    newElement.textContent = textContent;
+    newElement.classList.add(classDesc);
+    sourceContainer.appendChild(newElement);
 }
 
 function removeAllChildNodes(parent) {
@@ -94,95 +94,88 @@ function removeAllChildNodes(parent) {
 }
 
 function main () {
+    // Initialization of game variables
     let playerSelection = null;
     let singleResult = null;
     let singleGame = null;
-    let gameCount = 0;
-
     const winningScore = 5;
     let playerScore = 0;
     let computerScore = 0;
-    let finalWinner = null;
 
     const gameButtons = document.querySelectorAll('button.game-buttons');
     const gameResults = document.querySelector('div.game-results');
+    const gameScore = document.querySelector('div.game-score');
+    let singleScore = null;
+
+    let roundCount = 1; // Start at round 1
 
     gameButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            if (playerScore < 5 && computerScore < 5) {
-                gameCount++;
+            // Add the Game Score section only on the first click of a button
+            if (roundCount === 1) {
+                addElement('div', gameScore, singleScore, "Game Score", 'single-score');
+            }
+            roundCount++;   // Increment the round number
+
+            // The game is active as long as neither player has reached the winning score
+            if (playerScore < winningScore && computerScore < winningScore) {
                 playerSelection = button.innerText;
                 singleGame = singleRound(playerSelection);
     
-                addDiv(gameResults, singleResult, (`Game ${gameCount}: ` + singleGame), classDesc = "single-result");
+                addElement('div', gameResults, singleResult, singleGame, classDesc = "single-result");
                 if (singleGame.toLowerCase().includes("win")) {
                     playerScore++;
                 }
                 else if (singleGame.toLowerCase().includes("lose")) {
                     computerScore++;
-                }    
+                }
+                addElement    
             }
-
-            if (playerScore === 5 || computerScore === 5) {
-                gameButtons.forEach((button) =>  {
-                    button.disabled = true;
-                })
-                if (playerScore > computerScore) {
-                    finalWinner = "Congrats! You won the game!";
-                }
-                else if (computerScore > playerScore) {
-                    finalWinner = "You lost the game.";
-                }
-                addDiv(gameResults, singleResult, finalWinner, classDesc = "final-winner");
-                finalScore = `Player Score: ${playerScore}  Computer Score: ${computerScore}`;
-                addDiv(gameResults, singleResult, finalScore, classDesc = "final-winner");
-
-                let newButton = document.createElement('button');
-                newButton.textContent = "Play Again?";
-                newButton.classList.add('play-again-button');
-                gameResults.appendChild(newButton);
-
-                let playAgainButton = document.querySelector('button.play-again-button');
-                playAgainButton.addEventListener('click', () => {
-                    gameCount = 0;
-                    playerScore = 0;
-                    computerScore = 0;
-                    removeAllChildNodes(gameResults);    
-                    gameButtons.forEach((button) =>  {
-                        button.disabled = false;
-                    })
-                })
+            else {
+                endGame(playerScore, computerScore, winningScore);
             }
         });
     });    
+
+    function endGame (playerScore, computerScore, winningScore = 5) {
+        if (playerScore === winningScore || computerScore === winningScore) {
+            gameButtons.forEach((button) =>  {
+                button.disabled = true; // Disable the game buttons to prevent any further selections
+            })
+            let finalWinner = null;
+            if (playerScore > computerScore) {
+                finalWinner = "Congrats! You won the game!";
+            }
+            else if (computerScore > playerScore) {
+                finalWinner = "You lost the game.";
+            }
+    
+            // Print the final score and the winner
+            finalScore = `Player Score: ${playerScore}  Computer Score: ${computerScore}`;
+            addElement('div', gameResults, singleResult, finalWinner, classDesc = 'final-winner');
+            addElement('div', gameResults, singleResult, finalScore, classDesc = 'final-winner');
+
+            playAgain();
+        }
+    }    
+
+    function playAgain() {
+        // Create a new button to prompt the player if they wish to play the game again
+        let newButton = null;
+        addElement('button', gameResults, newButton, "Play Again?", 'play-again-button')
+
+        let playAgainButton = document.querySelector('button.play-again-button');
+        playAgainButton.addEventListener('click', () => {
+            roundCount = 1;
+            playerScore = 0;
+            computerScore = 0;
+            removeAllChildNodes(gameResults);
+            removeAllChildNodes(gameScore);
+            gameButtons.forEach((button) =>  {
+                button.disabled = false;
+            })
+        }) 
+    }
 }
 
 main();
-
-/* function game(numOfRounds = 5) {
-    let playerScore = 0;
-    let computerScore = 0;
-    let gameResult = null;
-
-    for (let count = 0; count < numOfRounds; count++) {
-        playerSelection = prompt("What's your hand?");
-        gameResult = singleRound(playerSelection,);
-        console.log(gameResult);
-
-        if (gameResult.toLowerCase().includes("win")) {
-            playerScore++;
-        }
-        else if (gameResult.toLowerCase().includes("lose")) {
-            computerScore++;
-        }
-        console.log(`Player Score: ${playerScore}   Computer Score: ${computerScore}`);    
-    }
-
-    if (playerScore > computerScore) {
-        return "Congrats! You won the game!";
-    }
-    else if (computerScore > playerScore) {
-        return "You lost the game.";
-    }
-}
-*/

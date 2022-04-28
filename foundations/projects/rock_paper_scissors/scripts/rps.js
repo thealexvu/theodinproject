@@ -119,7 +119,7 @@ function main () {
 
             // The game is active as long as neither player has reached the winning score
             if (playerScore < winningScore && computerScore < winningScore) {
-                playerSelection = button.innerText;
+                playerSelection = button.id;
                 singleGame = singleRound(playerSelection);
     
                 addElement('div', gameResults, singleResult, singleGame, classDesc = "single-result");

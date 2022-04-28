@@ -16,13 +16,60 @@ body {
 #game {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
   flex: 1;
 }
 
 #game > * {
   text-align: center;
+}
+
+#game .hands {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#game .buttons,
+#game .computer-hands {
+  display: flex;
+  flex-direction: column;
+}
+
+#game .computer-hands {
+  background-color: black;
+}
+
+button {
+  /* border: none;
+  background-color: transparent; */
+  background-image: url("../img/rock.png");
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  padding: 0px;
+  margin: 0px;
+
+  transition-duration: 0.4s;
+}
+
+#rock {
+  background-image: url("../img/rock.png");
+}
+#paper {
+  background-image: url("../img/paper.png");
+}
+#scissors {
+  background-image: url("../img/scissors.png");
+}
+
+.button:hover {
+  background-color: blue;
+  color:white;
+}
+
+img {
+  max-width: 300px;
+  height: auto;
 }
 
 #footer {

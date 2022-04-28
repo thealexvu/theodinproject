@@ -4,20 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie-edge">
-        <title>Rock, Paper, Scissors</title>
+        <title>Rock! Paper! Scissors!</title>
         <link rel="stylesheet" href="css/rps.css">
 
         <script src="scripts/rps.js" defer></script>
     </head>
     <body>
         <div class="header" id="header">
-            <p>Rock, Paper, Scissors<p>
+            <p>Rock! Paper! Scissors!<p>
         </div>
         <div class="game" id="game">
-            <div class="buttons">
-                <button class="game-buttons" id="rock-button">Rock</button>
-                <button class="game-buttons" id="paper-button">Paper</button>
-                <button class="game-buttons" id="scissors-button">Scissors</button>
+            <div class="hands">
+                <div class="buttons">
+                    <!-- <button class="game-buttons" id="rock"><img src="img/rock.png"></button>
+                    <button class="game-buttons" id="paper"><img src="img/paper.png"></button>
+                    <button class="game-buttons" id="scissors"><img src="img/scissors.png"></button> -->
+                    <button class="game-buttons" id="rock"></button>
+                    <button class="game-buttons" id="paper"></button>
+                    <button class="game-buttons" id="scissors"></button>
+                </div>
+                <div class="computer-hands">
+                    <img src="img/rock_computer.png">
+                    <img src="img/paper_computer.png">
+                    <img src="img/scissors_computer.png">
+                </div>
             </div>
             <div class="game-results" id="game-results">
             </div>

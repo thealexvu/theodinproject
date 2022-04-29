@@ -93,6 +93,11 @@ function removeAllChildNodes(parent) {
     }
 }
 
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; // skip if it is not a transform
+    this.classList.remove('clicked');
+}
+
 function main () {
     // Initialization of game variables
     let playerSelection = null;
@@ -109,8 +114,20 @@ function main () {
 
     let roundCount = 1; // Start at round 1
 
+    const path_selector = document.querySelectorAll('path');
+    path_selector.forEach((path) => {
+        path.addEventListener('transitionend', removeTransition);
+    })
+
+    const computerHands = document.querySelectorAll('button.computer-hands');
+
     gameButtons.forEach((button) => {
         button.addEventListener('click', () => {
+            let svg = document.querySelector(`path.${button.id}-svg`);
+            button.classList.add('clicked');
+            button.addEventListener('transitionend', removeTransition);
+            svg.classList.add('clicked');
+
             // Add the Game Score section only on the first click of a button
             if (roundCount === 1) {
                 addElement('div', gameScore, singleScore, "Game Score", 'single-score');

@@ -100,7 +100,6 @@ function removeTransition(e) {
 
 function main () {
     // Initialization of game variables
-    let playerSelection = null;
     let singleResult = null;
     let singleGame = null;
     const winningScore = 5;
@@ -123,10 +122,22 @@ function main () {
 
     gameButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            let svg = document.querySelector(`path.${button.id}-svg`);
-            button.classList.add('clicked');
-            button.addEventListener('transitionend', removeTransition);
+            // button.classList.add('clicked');
+            // button.addEventListener('transitionend', removeTransition);
+            // let path = document.querySelector(`path.${button.id}-svg`);
+            // path.classList.add('clicked');
+            // path.addEventListener('transitionend', removeTransition);
+
+            let svg = document.querySelector(`svg.${button.id}-svg`);
             svg.classList.add('clicked');
+            svg.addEventListener('transitionend', removeTransition);
+
+            let playerSelection = button.id;
+            let computerSelection = computerPlay();
+
+            let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
+            svg_computer.classList.add('clicked');
+            svg_computer.addEventListener('transitionend', removeTransition);
 
             // Add the Game Score section only on the first click of a button
             if (roundCount === 1) {
@@ -136,8 +147,8 @@ function main () {
 
             // The game is active as long as neither player has reached the winning score
             if (playerScore < winningScore && computerScore < winningScore) {
-                playerSelection = button.id;
-                singleGame = singleRound(playerSelection);
+
+                singleGame = singleRound(playerSelection, computerSelection);
     
                 addElement('div', gameResults, singleResult, singleGame, classDesc = "single-result");
                 if (singleGame.toLowerCase().includes("win")) {
@@ -146,7 +157,6 @@ function main () {
                 else if (singleGame.toLowerCase().includes("lose")) {
                     computerScore++;
                 }
-                addElement    
             }
             else {
                 endGame(playerScore, computerScore, winningScore);

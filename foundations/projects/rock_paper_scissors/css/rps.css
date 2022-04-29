@@ -29,7 +29,7 @@ body {
   justify-content: space-evenly;
 }
 
-#game .buttons,
+#game .player-hands,
 #game .computer-hands {
   display: flex;
   flex-direction: column;
@@ -54,7 +54,7 @@ button {
   color:white;
 }
 
-img {
+/* img {
   max-width: 300px;
   height: auto;
 
@@ -64,7 +64,7 @@ img {
 img:hover {
   background-color: gray;
   color: white;
-}
+} */
 
 #footer {
   display: flex;
@@ -77,13 +77,26 @@ img:hover {
 svg {
   width: 300px;
   height: 300px;
-}
-
-path {
   transition-duration: 0.5s;
 }
 
+/* path {
+  transition-duration: 0.5s;
+} */
+
+/* .computer-hands svg {
+  transform: scaleX(-1);
+  filter: invert(100%);
+} */
+
 .clicked {
-  transform: scale(1.01);
+  transform: scale(1.25);
+}
+
+.player-hands .clicked {
   filter: drop-shadow(5px 5px 5px gold);
+}
+
+.computer-hands .clicked {
+  filter: drop-shadow(5px 5px 5px red);
 }

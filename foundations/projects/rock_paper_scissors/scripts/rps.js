@@ -100,8 +100,8 @@ function removeTransition(e) {
 
 function main () {
     // Initialization of game variables
-    let singleResult = null;
     let singleGame = null;
+    let singleResult = null;
     const winningScore = 5;
     let playerScore = 0;
     let computerScore = 0;
@@ -113,10 +113,10 @@ function main () {
 
     let roundCount = 1; // Start at round 1
 
-    const path_selector = document.querySelectorAll('path');
-    path_selector.forEach((path) => {
-        path.addEventListener('transitionend', removeTransition);
-    })
+    // const path_selector = document.querySelectorAll('path');
+    // path_selector.forEach((path) => {
+    //     path.addEventListener('transitionend', removeTransition);
+    // })
 
     const computerHands = document.querySelectorAll('button.computer-hands');
 
@@ -153,9 +153,47 @@ function main () {
                 addElement('div', gameResults, singleResult, singleGame, classDesc = "single-result");
                 if (singleGame.toLowerCase().includes("win")) {
                     playerScore++;
+                    let svg = document.querySelector(`svg.${button.id}-svg`);
+                    svg.classList.add('clicked', 'win');
+                    svg.addEventListener('transitionend', () => {
+                        removeTransition;
+                        svg.classList.remove('win');
+                    });
+                    let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
+                    svg_computer.classList.add('clicked', 'lose');
+                    svg_computer.addEventListener('transitionend', () => {
+                        removeTransition;
+                        svg_computer.classList.remove('lose');
+                    });
                 }
                 else if (singleGame.toLowerCase().includes("lose")) {
                     computerScore++;
+                    let svg = document.querySelector(`svg.${button.id}-svg`);
+                    svg.classList.add('clicked', 'lose');
+                    svg.addEventListener('transitionend', () => {
+                        removeTransition;
+                        svg.classList.remove('lose');
+                    });
+                    let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
+                    svg_computer.classList.add('clicked', 'win');
+                    svg_computer.addEventListener('transitionend', () => {
+                        removeTransition;
+                        svg_computer.classList.remove('win');
+                    });
+                }
+                else {
+                    let svg = document.querySelector(`svg.${button.id}-svg`);
+                    svg.classList.add('clicked', 'tie');
+                    svg.addEventListener('transitionend', () => {
+                        removeTransition;
+                        svg.classList.remove('tie');
+                    });
+                    let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
+                    svg_computer.classList.add('clicked', 'tie');
+                    svg_computer.addEventListener('transitionend', () => {
+                        removeTransition;
+                        svg_computer.classList.remove('tie');
+                    });
                 }
             }
             else {

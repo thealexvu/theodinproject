@@ -128,16 +128,16 @@ function main () {
             // path.classList.add('clicked');
             // path.addEventListener('transitionend', removeTransition);
 
-            let svg = document.querySelector(`svg.${button.id}-svg`);
-            svg.classList.add('clicked');
-            svg.addEventListener('transitionend', removeTransition);
-
             let playerSelection = button.id;
             let computerSelection = computerPlay();
 
-            let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
-            svg_computer.classList.add('clicked');
-            svg_computer.addEventListener('transitionend', removeTransition);
+            // let svg = document.querySelector(`svg.${button.id}-svg`);
+            // svg.classList.add('clicked');
+            // svg.addEventListener('transitionend', removeTransition);
+
+            // let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
+            // svg_computer.classList.add('clicked');
+            // svg_computer.addEventListener('transitionend', removeTransition);
 
             // Add the Game Score section only on the first click of a button
             if (roundCount === 1) {
@@ -157,13 +157,13 @@ function main () {
                     svg.classList.add('clicked', 'win');
                     svg.addEventListener('transitionend', () => {
                         removeTransition;
-                        svg.classList.remove('win');
+                        svg.classList.remove('clicked', 'win');
                     });
                     let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
                     svg_computer.classList.add('clicked', 'lose');
                     svg_computer.addEventListener('transitionend', () => {
                         removeTransition;
-                        svg_computer.classList.remove('lose');
+                        svg_computer.classList.remove('clicked', 'lose');
                     });
                 }
                 else if (singleGame.toLowerCase().includes("lose")) {
@@ -172,13 +172,13 @@ function main () {
                     svg.classList.add('clicked', 'lose');
                     svg.addEventListener('transitionend', () => {
                         removeTransition;
-                        svg.classList.remove('lose');
+                        svg.classList.remove('clicked', 'lose');
                     });
                     let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
                     svg_computer.classList.add('clicked', 'win');
                     svg_computer.addEventListener('transitionend', () => {
                         removeTransition;
-                        svg_computer.classList.remove('win');
+                        svg_computer.classList.remove('clicked', 'win');
                     });
                 }
                 else {
@@ -186,13 +186,13 @@ function main () {
                     svg.classList.add('clicked', 'tie');
                     svg.addEventListener('transitionend', () => {
                         removeTransition;
-                        svg.classList.remove('tie');
+                        svg.classList.remove('clicked', 'tie');
                     });
                     let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
                     svg_computer.classList.add('clicked', 'tie');
                     svg_computer.addEventListener('transitionend', () => {
                         removeTransition;
-                        svg_computer.classList.remove('tie');
+                        svg_computer.classList.remove('clicked', 'tie');
                     });
                 }
             }

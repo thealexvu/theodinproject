@@ -5,6 +5,8 @@ body {
   flex-direction: column;
   min-height: 100vh; 
   margin: 0;
+
+  background-color: #ffffffe6;
 }
 
 #header {
@@ -15,7 +17,6 @@ body {
 
 #game {
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
   flex: 1;
 }
@@ -24,7 +25,7 @@ body {
   text-align: center;
 }
 
-#game .hands {
+#game {
   display: flex;
   justify-content: space-evenly;
 }
@@ -40,7 +41,6 @@ body {
 
 #game .computer-hands {
   /* background-color: black; */
-  width: 50vh;
 }
 
 button {
@@ -79,8 +79,8 @@ img:hover {
 }
 
 svg {
-  max-height: 20vh;
-  width: auto;
+  max-width: 25vh;
+  height: auto;
   transition-duration: 0.5s;
 }
 
@@ -110,15 +110,7 @@ svg {
   filter: drop-shadow(5px 5px 5px gold);
 }
 
-/* .player-hands .clicked {
-  filter: drop-shadow(5px 5px 5px gold);
-}
-
-.computer-hands .clicked {
-  filter: drop-shadow(5px 5px 5px red);
-} */
-
 .computer-hands path {
-  fill: white;
+  /* fill: black; */
   stroke: black;
 }

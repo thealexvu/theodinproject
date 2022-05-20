@@ -131,9 +131,9 @@ function main () {
             let playerSelection = button.id;
             let computerSelection = computerPlay();
 
-            // let svg = document.querySelector(`svg.${button.id}-svg`);
-            // svg.classList.add('clicked');
-            // svg.addEventListener('transitionend', removeTransition);
+            let svg = document.querySelector(`svg.${button.id}-svg`);
+            svg.classList.add('clicked');
+            svg.addEventListener('transitionend', removeTransition);
 
             // let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
             // svg_computer.classList.add('clicked');
@@ -153,47 +153,47 @@ function main () {
                 addElement('div', gameResults, singleResult, singleGame, classDesc = "single-result");
                 if (singleGame.toLowerCase().includes("win")) {
                     playerScore++;
-                    let svg = document.querySelector(`svg.${button.id}-svg`);
-                    svg.classList.add('clicked', 'win');
-                    svg.addEventListener('transitionend', () => {
-                        removeTransition;
-                        svg.classList.remove('clicked', 'win');
-                    });
-                    let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
-                    svg_computer.classList.add('clicked', 'lose');
-                    svg_computer.addEventListener('transitionend', () => {
-                        removeTransition;
-                        svg_computer.classList.remove('clicked', 'lose');
-                    });
+                    // let svg = document.querySelector(`svg.${button.id}-svg`);
+                    // svg.classList.add('clicked', 'win');
+                    // svg.addEventListener('transitionend', () => {
+                    //     removeTransition;
+                    //     svg.classList.remove('clicked', 'win');
+                    // });
+                    // let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
+                    // svg_computer.classList.add('clicked', 'lose');
+                    // svg_computer.addEventListener('transitionend', () => {
+                    //     removeTransition;
+                    //     svg_computer.classList.remove('clicked', 'lose');
+                    // });
                 }
                 else if (singleGame.toLowerCase().includes("lose")) {
                     computerScore++;
-                    let svg = document.querySelector(`svg.${button.id}-svg`);
-                    svg.classList.add('clicked', 'lose');
-                    svg.addEventListener('transitionend', () => {
-                        removeTransition;
-                        svg.classList.remove('clicked', 'lose');
-                    });
-                    let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
-                    svg_computer.classList.add('clicked', 'win');
-                    svg_computer.addEventListener('transitionend', () => {
-                        removeTransition;
-                        svg_computer.classList.remove('clicked', 'win');
-                    });
+                    // let svg = document.querySelector(`svg.${button.id}-svg`);
+                    // svg.classList.add('clicked', 'lose');
+                    // svg.addEventListener('transitionend', () => {
+                    //     removeTransition;
+                    //     svg.classList.remove('clicked', 'lose');
+                    // });
+                    // let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
+                    // svg_computer.classList.add('clicked', 'win');
+                    // svg_computer.addEventListener('transitionend', () => {
+                    //     removeTransition;
+                    //     svg_computer.classList.remove('clicked', 'win');
+                    // });
                 }
                 else {
                     let svg = document.querySelector(`svg.${button.id}-svg`);
-                    svg.classList.add('clicked', 'tie');
-                    svg.addEventListener('transitionend', () => {
-                        removeTransition;
-                        svg.classList.remove('clicked', 'tie');
-                    });
-                    let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
-                    svg_computer.classList.add('clicked', 'tie');
-                    svg_computer.addEventListener('transitionend', () => {
-                        removeTransition;
-                        svg_computer.classList.remove('clicked', 'tie');
-                    });
+                    // svg.classList.add('clicked', 'tie');
+                    // svg.addEventListener('transitionend', () => {
+                    //     removeTransition;
+                    //     svg.classList.remove('clicked', 'tie');
+                    // });
+                    // let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
+                    // svg_computer.classList.add('clicked', 'tie');
+                    // svg_computer.addEventListener('transitionend', () => {
+                    //     removeTransition;
+                    //     svg_computer.classList.remove('clicked', 'tie');
+                    // });
                 }
             }
             else {

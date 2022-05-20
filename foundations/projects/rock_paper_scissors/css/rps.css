@@ -11,14 +11,8 @@ body {
 
 #header {
   text-align: center;
-  font-size: 36px;
+  font-size: 5vw;
   font-weight: 700;
-}
-
-#game {
-  display: flex;
-  justify-content: space-evenly;
-  flex: 1;
 }
 
 #game > * {
@@ -26,14 +20,16 @@ body {
 }
 
 #game {
+  flex-grow: 1;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #game .player-hands,
 #game .computer-hands {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 30px;
@@ -58,18 +54,6 @@ button {
   color:white;
 }
 
-/* img {
-  max-width: 300px;
-  height: auto;
-
-  transition-duration: 0.4s;
-}
-
-img:hover {
-  background-color: gray;
-  color: white;
-} */
-
 #footer {
   display: flex;
   justify-content: center;
@@ -79,26 +63,17 @@ img:hover {
 }
 
 svg {
-  max-width: 25vh;
+  width: 10vw;
   height: auto;
   transition-duration: 0.5s;
 }
 
-/* path {
-  transition-duration: 0.5s;
-} */
-
-/* .computer-hands svg {
-  transform: scaleX(-1);
-  filter: invert(100%);
-} */
-
 .clicked {
   transform: scale(1.25);
-  /* filter: drop-shadow(5px 5px 5px gold); */
+  filter: drop-shadow(5px 5px 5px gold);
 }
 
-.win {
+/* .win {
   filter: drop-shadow(5px 5px 5px green);
 }
 
@@ -108,9 +83,8 @@ svg {
 
 .tie {
   filter: drop-shadow(5px 5px 5px gold);
-}
+} */
 
 .computer-hands path {
-  /* fill: black; */
   stroke: black;
 }

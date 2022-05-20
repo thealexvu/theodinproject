@@ -118,7 +118,10 @@ function main () {
     //     path.addEventListener('transitionend', removeTransition);
     // })
 
-    const computerHands = document.querySelectorAll('button.computer-hands');
+    // const computerHands = document.querySelectorAll('button.computer-hands');
+
+    const playerHand = document.querySelector('div.game-play-player');
+    const computerHand = document.querySelector('div.game-play-computer');
 
     gameButtons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -130,6 +133,36 @@ function main () {
 
             let playerSelection = button.id;
             let computerSelection = computerPlay();
+
+            // let playerHandImg = document.createElement('img');
+            // playerHandImg.classList.add('playerHandImg');
+            // playerHandImg.src = `img/${playerSelection}.svg`;
+            // playerHand.appendChild(playerHandImg);
+
+            // let computerHandImg = document.createElement('img');
+            // computerHandImg.classList.add('computerHandImg');
+            // computerHandImg.src = `img/${computerSelection}_computer.svg`;
+            // computerHand.appendChild(computerHandImg);
+
+            // setTimeout( () => {
+            //     playerHandImg.remove();
+            //     computerHandImg.remove();
+            // }, 3000);
+
+            let playerHandSvg = document.createElement('object');
+            playerHandSvg.classList.add('playerHandSvg');
+            playerHandSvg.data = `img/${playerSelection}.svg`;
+            playerHand.appendChild(playerHandSvg);
+
+            let computerHandSvg = document.createElement('object');
+            computerHandSvg.classList.add('computerHandSvg');
+            computerHandSvg.data = `img/${computerSelection}_computer.svg`;
+            computerHand.appendChild(computerHandSvg);
+
+            setTimeout( () => {
+                playerHandSvg.remove();
+                computerHandSvg.remove();
+            }, 3000);
 
             let svg = document.querySelector(`svg.${button.id}-svg`);
             svg.classList.add('clicked');
@@ -153,47 +186,47 @@ function main () {
                 addElement('div', gameResults, singleResult, singleGame, classDesc = "single-result");
                 if (singleGame.toLowerCase().includes("win")) {
                     playerScore++;
-                    // let svg = document.querySelector(`svg.${button.id}-svg`);
-                    // svg.classList.add('clicked', 'win');
-                    // svg.addEventListener('transitionend', () => {
-                    //     removeTransition;
-                    //     svg.classList.remove('clicked', 'win');
-                    // });
-                    // let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
-                    // svg_computer.classList.add('clicked', 'lose');
-                    // svg_computer.addEventListener('transitionend', () => {
-                    //     removeTransition;
-                    //     svg_computer.classList.remove('clicked', 'lose');
-                    // });
+                    let img = document.querySelector(`object.playerHandSvg`);
+                    img.classList.add('clicked', 'win');
+                    img.addEventListener('transitionend', () => {
+                        removeTransition;
+                        img.classList.remove('clicked', 'win');
+                    });
+                    let img_computer = document.querySelector(`object.computerHandSvg`);
+                    img_computer.classList.add('clicked', 'lose');
+                    img_computer.addEventListener('transitionend', () => {
+                        removeTransition;
+                        img_computer.classList.remove('clicked', 'lose');
+                    });
                 }
                 else if (singleGame.toLowerCase().includes("lose")) {
                     computerScore++;
-                    // let svg = document.querySelector(`svg.${button.id}-svg`);
-                    // svg.classList.add('clicked', 'lose');
-                    // svg.addEventListener('transitionend', () => {
-                    //     removeTransition;
-                    //     svg.classList.remove('clicked', 'lose');
-                    // });
-                    // let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
-                    // svg_computer.classList.add('clicked', 'win');
-                    // svg_computer.addEventListener('transitionend', () => {
-                    //     removeTransition;
-                    //     svg_computer.classList.remove('clicked', 'win');
-                    // });
+                    let img = document.querySelector(`object.playerHandSvg`);
+                    img.classList.add('clicked', 'lose');
+                    img.addEventListener('transitionend', () => {
+                        removeTransition;
+                        img.classList.remove('clicked', 'lose');
+                    });
+                    let img_computer = document.querySelector(`object.computerHandSvg`);
+                    img_computer.classList.add('clicked', 'win');
+                    img_computer.addEventListener('transitionend', () => {
+                        removeTransition;
+                        img_computer.classList.remove('clicked', 'win');
+                    });
                 }
                 else {
-                    let svg = document.querySelector(`svg.${button.id}-svg`);
-                    // svg.classList.add('clicked', 'tie');
-                    // svg.addEventListener('transitionend', () => {
-                    //     removeTransition;
-                    //     svg.classList.remove('clicked', 'tie');
-                    // });
-                    // let svg_computer = document.querySelector(`svg.${computerSelection}-svg-computer`);
-                    // svg_computer.classList.add('clicked', 'tie');
-                    // svg_computer.addEventListener('transitionend', () => {
-                    //     removeTransition;
-                    //     svg_computer.classList.remove('clicked', 'tie');
-                    // });
+                    let img = document.querySelector(`object.playerHandSvg`);
+                    img.classList.add('clicked', 'tie');
+                    img.addEventListener('transitionend', () => {
+                        removeTransition;
+                        img.classList.remove('clicked', 'tie');
+                    });
+                    let img_computer = document.querySelector(`object.computerHandSvg`);
+                    img_computer.classList.add('clicked', 'tie');
+                    img_computer.addEventListener('transitionend', () => {
+                        removeTransition;
+                        img_computer.classList.remove('clicked', 'tie');
+                    });
                 }
             }
             else {

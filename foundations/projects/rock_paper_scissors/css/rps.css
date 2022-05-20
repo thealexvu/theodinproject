@@ -1,3 +1,7 @@
+/* * {
+  border: 2px solid red;
+} */
+
 body {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -13,6 +17,7 @@ body {
   text-align: center;
   font-size: 5vw;
   font-weight: 700;
+  padding: 10px;
 }
 
 #game > * {
@@ -24,6 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 10px;
 }
 
 #game .player-hands,
@@ -35,9 +41,29 @@ body {
   gap: 30px;
 }
 
-#game .computer-hands {
-  /* background-color: black; */
+.game-play {
+  display: flex;
+  justify-content: center;
+  height: 25vh;
 }
+
+/* .game-play * {
+  border: 2px solid red;
+} */
+
+.game-play img {
+  max-height: 100%;
+  width: auto;
+}
+
+.game-play object {
+  max-height: 100%;
+  width: auto;
+}
+
+/* .game-play .game-play-computer {
+  background-color: black;
+} */
 
 button {
   border: none;
@@ -73,7 +99,7 @@ svg {
   filter: drop-shadow(5px 5px 5px gold);
 }
 
-/* .win {
+.win {
   filter: drop-shadow(5px 5px 5px green);
 }
 
@@ -83,7 +109,7 @@ svg {
 
 .tie {
   filter: drop-shadow(5px 5px 5px gold);
-} */
+}
 
 .computer-hands path {
   stroke: black;

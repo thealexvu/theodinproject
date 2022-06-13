@@ -35,7 +35,6 @@ body {
 #game .player-hands,
 #game .computer-hands {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 30px;
@@ -47,7 +46,11 @@ body {
   height: 25vh;
 }
 
-/* .game-play * {
+/* .game-play {
+  border: 2px solid red;
+}
+
+.game-play * {
   border: 2px solid red;
 } */
 
@@ -59,6 +62,7 @@ body {
 .game-play object {
   max-height: 100%;
   width: auto;
+  transition-duration: 0.5s;
 }
 
 /* .game-play .game-play-computer {

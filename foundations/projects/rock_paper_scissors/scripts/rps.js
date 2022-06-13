@@ -80,6 +80,21 @@ function singleRound (playerSelection, computerSelection = computerPlay()) {
     return printWinner(playerWin, playerSelection, computerSelection)
 }
 
+// function printWinner (playerWin, playerSelection, computerSelection) {
+//     playerSelection = capitalizeFirstLetter(playerSelection);
+//     computerSelection = capitalizeFirstLetter(computerSelection);
+
+//     if (playerWin === null) {
+//         return `Tie! You both picked ${playerSelection}`;
+//     }
+//     else if (playerWin === true) {
+//         return `You Win! ${playerSelection} beats ${computerSelection}`;
+//     }
+//     else {
+//         return `You Lose! ${computerSelection} beats ${playerSelection}`;
+//     }
+// }
+
 function addElement (elementType = 'div', sourceContainer, newElement, textContent, classDesc = "newElement") {
     newElement = document.createElement(elementType);
     newElement.textContent = textContent;
@@ -184,15 +199,16 @@ function main () {
                 singleGame = singleRound(playerSelection, computerSelection);
     
                 addElement('div', gameResults, singleResult, singleGame, classDesc = "single-result");
+                let img = document.querySelector(`object.playerHandSvg`);
+                let img_computer = document.querySelector(`object.computerHandSvg`);
+
                 if (singleGame.toLowerCase().includes("win")) {
                     playerScore++;
-                    let img = document.querySelector(`object.playerHandSvg`);
                     img.classList.add('clicked', 'win');
                     img.addEventListener('transitionend', () => {
                         removeTransition;
                         img.classList.remove('clicked', 'win');
                     });
-                    let img_computer = document.querySelector(`object.computerHandSvg`);
                     img_computer.classList.add('clicked', 'lose');
                     img_computer.addEventListener('transitionend', () => {
                         removeTransition;
@@ -201,13 +217,11 @@ function main () {
                 }
                 else if (singleGame.toLowerCase().includes("lose")) {
                     computerScore++;
-                    let img = document.querySelector(`object.playerHandSvg`);
                     img.classList.add('clicked', 'lose');
                     img.addEventListener('transitionend', () => {
                         removeTransition;
                         img.classList.remove('clicked', 'lose');
                     });
-                    let img_computer = document.querySelector(`object.computerHandSvg`);
                     img_computer.classList.add('clicked', 'win');
                     img_computer.addEventListener('transitionend', () => {
                         removeTransition;
@@ -215,13 +229,11 @@ function main () {
                     });
                 }
                 else {
-                    let img = document.querySelector(`object.playerHandSvg`);
                     img.classList.add('clicked', 'tie');
                     img.addEventListener('transitionend', () => {
                         removeTransition;
                         img.classList.remove('clicked', 'tie');
                     });
-                    let img_computer = document.querySelector(`object.computerHandSvg`);
                     img_computer.classList.add('clicked', 'tie');
                     img_computer.addEventListener('transitionend', () => {
                         removeTransition;

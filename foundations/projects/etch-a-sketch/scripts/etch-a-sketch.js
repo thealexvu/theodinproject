@@ -19,7 +19,7 @@ function createGrid(numOfTiles = 16) {
 }
 
 function main() {
-    createGrid(50);
+    createGrid();
 }
 
 main();

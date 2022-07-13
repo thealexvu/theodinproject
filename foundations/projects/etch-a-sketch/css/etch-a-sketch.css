@@ -2,14 +2,49 @@
     width: 100vw;
 }
 
-#container {
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
     display: flex;
-    height: auto;
-    width: 75vw;
+    flex-direction: column;
+    min-height: 100vh; 
+    margin: 0;
+  
+    background-color: #ffffffe6;
+  }
+
+#header {
+    display: flex;
+    justify-content: center;
+}
+
+#header-title {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+#container {
+    border: solid 1px red;
+    display: flex;
+    justify-content: center;
+
+    max-width: 80vw;
+    max-height: auto;
+
+    margin: 10vw;
 }
 
 div .grid-box {
+    border: solid 1px black;
     height: 50px;
     width: 50px;
-    border: solid 1px black;
 }
+
+#footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    font-weight: 200;
+  }

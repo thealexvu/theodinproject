@@ -1,0 +1,15 @@
+@viewport {
+    width: 100vw;
+}
+
+#container {
+    display: flex;
+    height: auto;
+    width: 75vw;
+}
+
+div .grid-box {
+    height: 50px;
+    width: 50px;
+    border: solid 1px black;
+}

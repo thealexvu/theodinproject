@@ -1,4 +1,7 @@
-function createGrid(numOfTiles = 16) {
+const DEFAULT_GRID_SIZE = 16;
+const MAX_GRID_SIZE = 100;
+
+function createGrid(numOfTiles = DEFAULT_GRID_SIZE) {
     const containerDiv = document.querySelector('div#container')
     let newColumnDiv = null;
     let newBoxDiv = null;
@@ -27,8 +30,13 @@ function colorBox(color = "grey") {
     })
 }
 
+function getSliderValue() {
+    var slider = document.getElementById('tileRange');
+    return slider.value;
+}
+
 function main() {
-    createGrid();
+    createGrid(getSliderValue());
     colorBox();
 }
 

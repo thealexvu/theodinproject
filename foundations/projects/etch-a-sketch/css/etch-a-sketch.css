@@ -7,6 +7,7 @@ body {
   
     display: flex;
     flex-direction: column;
+    align-items: center;
     min-height: 100vh; 
     margin: 0;
   
@@ -24,32 +25,31 @@ body {
 }
 
 #container {
-    border: solid 1px red;
+    border: solid 5px rgb(170, 170, 170);
     display: flex;
     justify-content: center;
 
-    min-width: 80vw;
-    min-height: auto;
+    width: 60vw;
+    height: 60vw;
 
-    margin: 10vw;
+    /* margin: 20vw; */
 }
 
 div .grid-column {
-    flex: 1 1 auto;
-
-/*     display: flex;
-    flex-direction: column; */
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 div .grid-box {
-    flex: 1 1 auto;
-    
-    border: solid 1px black;
-    min-height: 10px;
-    width: auto;
+    flex: 1 0 auto;
+    border: solid 1px rgb(220, 220, 220);
+    /* min-height: 1px;
+    min-width: 1px; */
 }
 
 #footer {
+    align-self: stretch;
     margin-top: auto;
     display: flex;
     justify-content: center;

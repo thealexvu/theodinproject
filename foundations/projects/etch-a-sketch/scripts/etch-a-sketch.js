@@ -1,7 +1,9 @@
 const DEFAULT_GRID_SIZE = 16;
 const MAX_GRID_SIZE = 100;
+const DEFAULT_GRID_COLOR = "grey";
 
 function createGrid(numOfTiles = DEFAULT_GRID_SIZE) {
+    clearContainer();
     const containerDiv = document.querySelector('div#container')
     let newColumnDiv = null;
     let newBoxDiv = null;
@@ -19,9 +21,11 @@ function createGrid(numOfTiles = DEFAULT_GRID_SIZE) {
 
         containerDiv.appendChild(newColumnDiv);
     }
+
+    colorBox();
 }
 
-function colorBox(color = "grey") {
+function colorBox(color = DEFAULT_GRID_COLOR) {
     const gridBoxes = document.querySelectorAll('div.grid-box');
     gridBoxes.forEach((box) => {
         box.addEventListener('mouseover', (e) => {
@@ -30,14 +34,45 @@ function colorBox(color = "grey") {
     })
 }
 
-function getSliderValue() {
-    var slider = document.getElementById('tileRange');
-    return slider.value;
+function createNewGrid() {
+    const tileRange = document.getElementById('tileRange');
+    tileRange.addEventListener('click', () => {
+        createGrid(tileRange.value);
+    })
+}
+
+function createButtons() {
+    const controlsDiv = document.getElementById('controls');
+    let newButton = document.createElement('button');
+    newButton.id = "clear-button"
+    newButton.innerHTML = "Clear";
+    controlsDiv.appendChild(newButton);
+}
+
+function clearContainer() {
+    const containerDiv = document.getElementById('container');
+    while (containerDiv.firstChild) {
+        containerDiv.removeChild(containerDiv.firstChild);
+    }
+}
+
+function clearButton() {
+    const clearButton = document.getElementById('clear-button');
+    const tileRange = document.getElementById('tileRange');
+    let sliderValue = null;
+    tileRange.addEventListener('click', () => {
+        sliderValue = tileRange.value;
+    })
+    clearButton.addEventListener('click', (e) => {
+        createGrid(sliderValue);
+    })
 }
 
 function main() {
-    createGrid(getSliderValue());
-    colorBox();
+    createGrid();       // Creates initial grid on start-up
+    createNewGrid();    // Creates new grid based on slider value
+    createButtons();
+    clearButton();
 }
 
 main();

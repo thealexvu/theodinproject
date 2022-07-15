@@ -38,9 +38,41 @@ function operate(operator, a, b) {
     }
 }
 
-console.log(add(3,4));
-console.log(subtract(10,3));
-console.log(multiply(5,3));
-console.log(divide(30, 6));
+function getButtonValue() {
+    const calculatorButtons = document.querySelectorAll('button.calculator-button');
+    const calculatorDisplay = document.getElementById('calculator-display');
 
-console.log(operate('%', 5, 3));
+    calculatorButtons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            calculatorDisplay.innerHTML = button.innerHTML;
+        })
+    })
+}
+
+function clearDisplay() {
+    const clearButton = document.getElementById('calculator-clear');
+    const calculatorDisplay = document.getElementById('calculator-display');
+
+    clearButton.addEventListener('click', (e) => {
+        calculatorDisplay.innerHTML = null;
+    })
+}
+
+function isNumericOrDecimal(a) {
+    return (a === '.' || Number.isInteger(parseInt(a)));
+}
+
+function isOperator(a) {
+    return (a === '/' || a === 'X' || a === '-' || a === '+');
+}
+
+function isEqual(a) {
+    return (a === '=');
+}
+
+function main() {
+    getButtonValue();
+    clearDisplay();
+}
+
+main();

@@ -55,7 +55,7 @@ body {
     border: solid 2px black;
     border-radius: 5%;
     width: 80%;
-    height: 10%;
+    height: 15%;
 }
 
 #calculator-buttons-area {
@@ -71,7 +71,7 @@ body {
     border-radius: 5%;
 
     width: 80%;
-    height: 60%;
+    height: 50%;
 }
 
 .calculator-button {
@@ -80,7 +80,17 @@ body {
     width: 20%;
     height: 20%;
 
-    font-size: 54px;
+    font-size: 48px;
+    text-align: center;
+}
+
+#calculator-clear {
+    align-self: flex-end;
+    margin-right: 10%;
+    height: 8%;
+    width: 30%;
+    
+    font-size: 32px;
     text-align: center;
 }
 
